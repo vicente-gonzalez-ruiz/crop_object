@@ -32,7 +32,9 @@ def crop_largest_object(img):
     # Crop the object
     cropped_img = img[y:y+h, x:x+w]
 
-    return cropped_img
+    info = str([x, y, w, h])
+
+    return cropped_img, info
 
 if __name__ == "__main__":
 
