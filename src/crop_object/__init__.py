@@ -32,7 +32,7 @@ def crop_largest_object(img):
     # Crop the object
     cropped_img = img[y:y+h, x:x+w]
 
-    info = str([x, y, w, h])
+    info = f"crop_object\t{x}, {y}, {w}, {h}"
 
     return cropped_img, info
 
