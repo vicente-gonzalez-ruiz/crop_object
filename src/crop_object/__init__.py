@@ -30,9 +30,15 @@ def crop_largest_object(img):
     x, y, w, h = cv2.boundingRect(largest_contour)
 
     # Crop the object
-    cropped_img = img[y:y+h, x:x+w]
+    xx_coordinate = x + w
+    yy_coordinate = y + h
+    cropped_img = img[y:yy_coordinate, x:xx_coordinate]
 
-    info = f"crop_object\t{x} {y} {w} {h} # x y width height"
+    info = "\"crop_object\"\t"
+    info += f"x_coordinate={x}\t"
+    info += f"y_coordinate={y}\t"
+    info += f"xx_coordinate={xx_coordinate}\t"
+    info += f"yy_coordinate={yy_coordinate}"
 
     return cropped_img, info
 
