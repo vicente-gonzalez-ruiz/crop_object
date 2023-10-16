@@ -34,7 +34,7 @@ def crop_largest_object(img):
     yy_coordinate = y + h
     cropped_img = img[y:yy_coordinate, x:xx_coordinate]
 
-    info = "\"crop_object\"\t"
+    info = "crop_object\t"
     info += f"x_coordinate={x}\t"
     info += f"y_coordinate={y}\t"
     info += f"xx_coordinate={xx_coordinate}\t"
