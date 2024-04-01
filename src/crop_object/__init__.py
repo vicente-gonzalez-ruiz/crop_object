@@ -21,7 +21,8 @@ logger.info(f"Running in Google Colab: {IN_COLAB}")
 
 def crop_largest_object(img):
     # Find contours of the object
-    contours, _ = cv2.findContours(img[..., 0], cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    #contours, _ = cv2.findContours(img[..., 0], cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     try:
         # Find the largest contour (i.e. the object)
