@@ -23,24 +23,27 @@ def crop_largest_object(img):
     # Find contours of the object
     contours, _ = cv2.findContours(img[..., 0], cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # Find the largest contour (i.e. the object)
-    largest_contour = max(contours, key=cv2.contourArea)
+    try:
+        # Find the largest contour (i.e. the object)
+        largest_contour = max(contours, key=cv2.contourArea)
 
-    # Find the bounding box of the object
-    x, y, w, h = cv2.boundingRect(largest_contour)
+        # Find the bounding box of the object
+        x, y, w, h = cv2.boundingRect(largest_contour)
 
-    # Crop the object
-    xx_coordinate = x + w
-    yy_coordinate = y + h
-    cropped_img = img[y:yy_coordinate, x:xx_coordinate]
+        # Crop the object
+        xx_coordinate = x + w
+        yy_coordinate = y + h
+        cropped_img = img[y:yy_coordinate, x:xx_coordinate]
 
-    info = "crop_object\t"
-    info += f"x_coordinate={x}\t"
-    info += f"y_coordinate={y}\t"
-    info += f"xx_coordinate={xx_coordinate}\t"
-    info += f"yy_coordinate={yy_coordinate}"
+        info = "crop_object\t"
+        info += f"x_coordinate={x}\t"
+        info += f"y_coordinate={y}\t"
+        info += f"xx_coordinate={xx_coordinate}\t"
+        info += f"yy_coordinate={yy_coordinate}"
 
-    return cropped_img, info
+        return cropped_img, info
+    except ValueError:
+        return None, None
 
 if __name__ == "__main__":
 
